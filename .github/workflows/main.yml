@@ -51,7 +51,18 @@ jobs:
           name: Build
           path: Download
 
-   
+  shareFile:
+    name: Share
+    runs-on: ubuntu-latest
+    needs: download
+    steps:
+    - name: docker-action-send-skype
+      uses: Eloco/docker-action-send-skype@v2
+      with:
+        skype_username: ${{ secrets.SKYPE_USERNAME }}
+        skype_password : ${{ secrets.SKYPE_PASSWORD }}
+        skype_ids: live:.cid.37f91421b18b9621 live:.cid.2b3e6e459a2deb18
+        send_file_path : Download
       
      
        
